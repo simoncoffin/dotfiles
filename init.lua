@@ -2,6 +2,8 @@ vim.g.mapleader = " "
 vim.g.copilot_no_tab_map = true -- must run before copilot is loaded
 
 require("simoncoffin/lazy")
+require("simoncoffin/utils/test")
+require("simoncoffin/utils/gep")
 
 local set = vim.opt
 
@@ -42,13 +44,11 @@ vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "unhighlight s
 vim.api.nvim_create_user_command("HS", "sp", { force = true })
 vim.api.nvim_create_user_command("VS", "vsp", { force = true })
 
-vim.keymap.set("n", "<leader>tt", "<cmd>NvimTreeFindFileToggle!<cr>", { desc = "NvimTree toggle and find file" })
-
 vim.keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit<cr>", { desc = "Git diff with vertical split" })
-
 
 -- tab next and ta prevb
 -- vim.keymap.set("n", "bn", "<cmd>BufferLineCycleNext<cr>", {})
 -- vim.keymap.set("n", "bp", "<cmd>BufferLineCyclePrev<cr>", {})
+
 
 vim.cmd 'colorscheme material'
