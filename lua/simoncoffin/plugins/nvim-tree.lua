@@ -1,6 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
-  version = "*",
+  -- version = "*",
+  tag = "1.7.1", -- 1.8.* makes closing slow, likely a git related issue
   lazy = false,
   dependencies = {
     "nvim-tree/nvim-web-devicons",
@@ -20,13 +21,30 @@ return {
         sorter = "case_sensitive",
       },
       view = {
-        width = 30,
+        width = 60,
       },
       renderer = {
         group_empty = true,
       },
+      filesystem_watchers = {
+        enable = false,
+        debounce_delay = 50,
+        ignore_dirs = {
+          "node_modules",
+          "/node_modules",
+        },
+      },
       filters = {
         dotfiles = true,
+        git_ignored = true,
+        custom = {
+          "^\\.git$",
+          ".*\\.irb$",
+        },
+      },
+      git = {
+        enable = true,
+        timeout = 600,
       },
     })
 

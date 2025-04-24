@@ -27,16 +27,16 @@ config = function()
       "cssls",
       "dockerls",
       "docker_compose_language_service",
+      "eslint",
       "graphql",
       "html",
       "jsonls",
       "lua_ls",
       "pyright",
       "rubocop",
-      "solargraph",
       "sorbet",
       "sqlls",
-      "tsserver",
+      "ts_ls",
       "yamlls",
     },
     -- auto-install configured servers (with lspconfig)
@@ -45,13 +45,13 @@ config = function()
 
   mason_tool_installer.setup({
     ensure_installed = {
-      "prettier", -- prettier formatter
+      "prettierd", -- prettier formatter
       "stylua", -- lua formatter
       "isort", -- python formatter
       "rubocop",
       "black", -- python formatter
       "pylint", -- python linter
-      "eslint_d", -- js linter
+      "eslint", -- js/ts linter
     },
   })
 end,

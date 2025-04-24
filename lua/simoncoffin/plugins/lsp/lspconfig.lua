@@ -149,15 +149,10 @@ return {
     lspconfig["rubocop"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      cmd = { "bundle", "exec", "rubocop", "--lsp" },
-      root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+      -- cmd = { "bin/rubocop", "--lsp" },
+      -- root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
     })
 
-    -- -- lspconfig["solargraph"].setup({
-    -- --   capabilities = capabilities,
-    -- --   on_attach = on_attach,
-    -- -- })
-    --
     lspconfig["sorbet"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -168,7 +163,7 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),

@@ -14,6 +14,7 @@ set.cc = "120"                -- set vertical marker at line 120 (cc = color col
 set.cursorline = true         -- highlight current line, currently handled by colorscheme
 set.number = true             -- show actual line numbers (for current line only if relativenumber is set)
 set.ruler = true              -- ruler at bottom right to show line and column
+set.scrolloff = 10            -- keep 10 lines above and below cursor when scrolling
 set.splitbelow = true         -- default to split new window below current one
 set.splitright = true         -- default vsplit to open to right of current window
 
@@ -40,15 +41,24 @@ set.mouse = 'a'               -- enable mouse in all modes
 -- set.visualbell = true         -- disable audio bell
 
 vim.keymap.set("n", "<leader>nh", "<cmd>nohlsearch<cr>", { desc = "unhighlight searched text" })
-
+--
 vim.api.nvim_create_user_command("HS", "sp", { force = true })
 vim.api.nvim_create_user_command("VS", "vsp", { force = true })
+vim.api.nvim_create_user_command("GB", "GBrowse", { force = true, range = true }) -- range issues
+
+vim.keymap.set("n", "<leader>gb", "<cmd>GBrowse<cr>", { desc = "Open current file in browser" })
+vim.keymap.set("n", "<leader>fp", function()
+  local relative_path = vim.fn.expand("%:.")
+  vim.fn.setreg('+', relative_path)
+end, { desc = "Copy current relative file path to clipboard" })
 
 vim.keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit<cr>", { desc = "Git diff with vertical split" })
 
 -- tab next and ta prevb
 -- vim.keymap.set("n", "bn", "<cmd>BufferLineCycleNext<cr>", {})
 -- vim.keymap.set("n", "bp", "<cmd>BufferLineCyclePrev<cr>", {})
+
+
 
 
 vim.cmd 'colorscheme material'

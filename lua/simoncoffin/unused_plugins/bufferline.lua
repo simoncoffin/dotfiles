@@ -17,10 +17,14 @@ return {
         },
         highlights = {
           buffer_selected = {
-            fg = "#ffffff",
-            bg = "#ffffff",
+            fg = "#FF0000",
+            bg = "#FF0000",
           }
         },
+        indicator = {
+          style = 'underline'
+        },
+       -- diagnostics = "nvim_lsp",
       }
     })
 
